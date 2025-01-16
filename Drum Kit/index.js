@@ -10,6 +10,7 @@ var audio7 = new Audio("sounds/kick-bass.mp3");
 for (let i=0; i<numberOfDrumButtons; i++) {
     document.querySelectorAll(".drum")[i].addEventListener("click", function() {
         makeSound(this.innerHTML);
+        buttonAnimation(this.innerHTML);
     });
 }
 
@@ -43,4 +44,12 @@ function makeSound(key) {
         default:
             console.log(key);
     }
+}
+
+function buttonAnimation(currentKey) {
+    var activeButton = document.querySelector("." + currentKey);
+    activeButton.classList.add("pressed");
+    setTimeout(function() {
+        activeButton.classList.remove("pressed");
+    }, 100);
 }
